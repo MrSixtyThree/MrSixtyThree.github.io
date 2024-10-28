@@ -7,23 +7,56 @@
     <title>Game Design Portfolio</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to an external CSS file for styling -->
 </head>
-<body>
 
-    <!-- Top Navigation Bar -->
-    <nav>
-        <ul class="navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+<body class="landing-page" onload="loadNavbar()">
+  <!-- Top Navigation Bar -->
+  <div id="navbar-placeholder"></div>
+  
+  <!-- Page Content -->
 
-    <!-- Page Content -->
-    <section>
-        <h1>Welcome to My Game Design Portfolio</h1>
-        <p>Explore my projects and learn more about me.</p>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__text">
+      <h1>Programmer.<br> Game Designer.<br> Creative.</h1>
+      <p>Trying to turn ideas into a reality.</p>
+      <div>
+        <button class="hero__btn" onclick="location.href='projects.html'" >View Projects</button>
+        <button class="hero__btn" onclick="location.href='contact.html'" >Contact Me</button>
+      </div>
+    </div>
+    <div class="hero__image-container">
+      <img class="hero__image" src="images/declan_picture.jpg" alt="Declan Profile Picture" width="100%" height="100%">
+    </div>
+  </section>
+
+  <!-- Skill Tags Section-->
+   <!--
+  <section class="skills">
+    <h2>SKILLS</h2>
+    <div class="skills__tags">
+      <span>Unity</span>
+      <span>C, C++, C#</span>
+      <span>Game Design</span>
+      <span>HTML, CSS, JavaScript</span>
+      <span>UI/UX Design</span>
+      <span>Prototyping</span>
+      <span>Creative Direction</span>
+      <span>Collaboration</span>
+    </div>
+
+  </section>
+  -->
+  <!-- ************ START JAVASCRIPT ***********  -->
+  <script>
+    // JavaScript function to load the navbar
+    function loadNavbar() {
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    }
+  </script>
 
 </body>
 </html>
