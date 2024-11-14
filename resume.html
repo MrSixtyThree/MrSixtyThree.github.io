@@ -9,25 +9,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
 </head>
-<body>
+<body class="resume-body">
 
   <!-- Top Navigation Bar -->
   <div id="navbar-placeholder"></div>
 
   <!-- Page Content -->
-  <section class="resume-section">
-    <h2>My Resume</h2>
-    
-    <!-- Embedded PDF viewer -->
-    <iframe class="resume-iframe" src="documents/declan-resume.pdf" title="Preview of Declan's Resume">
-      Your browser does not support iframes. Please download the PDF instead.
-    </iframe>
-    
-    <!-- Download Link -->
-    <p>
-      <a href="documents/declan-resume.pdf" download="Declan_Greenwell_Resume.pdf">Download My Resume</a>
-    </p>
-  </section>
+  <div class="resume-container-parent">
+    <section class="resume-container">
+      <h2>Resume / CV</h2>
+      
+      <!-- Embedded PDF viewer -->
+      <iframe class="resume-iframe" src="documents/declan-resume.pdf" title="Preview of Declan's Resume">
+        Your browser does not support iframes. Please download the PDF instead.
+      </iframe>
+      
+      <!-- Download Link -->
+      <p class="resume-p">
+        Download my resume
+        <a class="resume-link" href="documents/declan-resume.pdf" download="Declan_Greenwell_Resume.pdf">here</a>
+      </p>
+    </section>
+  </div>
   
   
   <!-- ****************** START JAVASCRIPT ************************ -->
