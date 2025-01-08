@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Game - Game Design Portfolio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to an external CSS file for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body class="game-body">
+
+  <!-- Top Navigation Bar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Game Content / Canvas -->
+  <div class="game-container">
+    <div id="game-placeholder"></div>
+    <button onclick="moveUp()">FLAP</button>
+  </div>
+
+  <!-- ********* START JAVASCRIPT ************** -->
+  <script>
+
+    // Function to load the navbar
+    function loadNavbar() {
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                setActivePage();
+            });
+    }
+    window.addEventListener("load", loadNavbar);
+
+    // Game Logic
+
+    var myGamePiece;
+    var myObstacles = [];
+    var canvasHeight = 270;
+    var canvasWidth = 480;
+    var isGameStarted = false;
+
+    var myGameArea = {
+      canvas : document.createElement("canvas"),
+      start : function() {
+          this.canvas.width = canvasWidth;
+          this.canvas.height = canvasHeight;
+          this.canvas.style.backgroundColor = "darkgrey";
+          this.context = this.canvas.getContext("2d");
+          document.getElementById("game-placeholder").appendChild(this.canvas);
+          this.frameNumber = 100;
+          
+          // Wait for user input to start the game
+          
+      },
+      clear : function() {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      },
+      stop : function(){
+        clearInterval(this.interval);
+      }
+
+    }
+
+    function updateGameArea(){
+      var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+      
+      // Check for collisions
+      for (i = 0; i < myObstacles.length; i += 1) {
+        if (myGamePiece.collidedWith(myObstacles[i])) {
+          myGameArea.stop();
+          return;
+        }
+      }
+
+      // Clear the canvas
+      myGameArea.clear();
+
+      // Update frame number
+      myGameArea.frameNumber += 1;
+
+      // Manage new obstacles
+      if (myGameArea.frameNo == 1 || everyinterval(150)) {
+        x = myGameArea.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        minGap = 130;
+        maxGap = 150;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        var temp1 = new obstacle(10, height, "green", x, 0);
+        var temp2 = new obstacle(10, x - height - gap, "green", x, height + gap);
+
+        if (temp1.height > nyGameArea.canvas.height) {
+          myObstacles.push(temp2);
+        }
+        else if (temp2.height > nyGameArea.canvas.height) {
+          myObstacles.push(temp1);
+        }
+        else {
+          myObstacles.push(temp1);
+          myObstacles.push(temp2);
+        }
+
+      }
+
+      // Update all obstacles
+      for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].update();
+      }
+
+      // Update player
+      myGamePiece.newPosition();
+      myGamePiece.update();
+
+      // Check if player is out of bounds completely at the top or bottom
+      if (myGamePiece.y <= 0 - myGamePiece.height || myGamePiece.y >= canvasHeight + myGamePiece.height) {
+        myGameArea.stop();
+        return;
+      }
+
+    }
+
+    function everyinterval(n){
+      if ((myGameArea.frameNumber / n) % 1 == 0) {return true;}
+      return false;
+    }
+
+    function startGame(){
+      myGamePiece = new player(30, 30, "#FFD700", 30, 120);
+      myObstacle = new obstacle(10, 200, "green", 300, 120);
+      myGameArea.start();
+    }
+
+    function player(width, height, color, x, y){
+      this.width = width;
+      this.height = height;
+      this.speedY = 0;
+      this.gravity = 0.3;        
+      this.flapStrength = -6;    
+      this.maxFallSpeed = 5;   
+      this.x = x;
+      this.y = y;
+
+      this.update = function(){
+        ctx = myGameArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+
+      this.newPosition = function(){
+        // Apply gravity effect
+        this.speedY += this.gravity;
+        
+        // Limit maximum falling speed
+        if (this.speedY > this.maxFallSpeed) {
+            this.speedY = this.maxFallSpeed;
+        }
+        
+        // Update position based on current speed
+        this.y += this.speedY;
+
+      }
+
+      this.collidedWith = function(collider){
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = collider.x;
+        var otherright = collider.x + (collider.width);
+        var othertop = collider.y;
+        var otherbottom = collider.y + (collider.height);
+        var crash = true;
+        if ((mybottom < othertop) ||
+            (mytop > otherbottom) ||
+            (myright < otherleft) ||
+            (myleft > otherright)) {
+          crash = false;
+        }
+        return crash;
+      }
+    }
+
+    function moveUp() {
+      if (myGameArea.interval == null) {
+        myGameArea.interval = setInterval(updateGameArea, 20);
+      }
+      myGamePiece.speedY = myGamePiece.flapStrength; // Strong upward impulse
+    }
+
+    function obstacle(width, height, color, x, y){
+      this.width = width;
+      this.height = height;
+      this.x = x;
+      this.y = y;
+
+      this.update = function(){
+        this.x -= 1;
+        ctx = myGameArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+    }    
+
+    window.addEventListener("load", startGame);
+
+  </script>
+  <!-- ********* END JAVASCRIPT ************** -->
+    
+</body>
+</html>
