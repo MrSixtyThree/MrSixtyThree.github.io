@@ -25,7 +25,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center; /* Vertically centers the title and links */
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   background-color: var(--primary-color);
   overflow: hidden; /* Ensures the content doesn't overflow */
 }
@@ -33,20 +33,20 @@ html {
 /* Style for the title */
 .navbar-title h1 a {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2.5vw;
   text-decoration: none;
   color: var(--secondary-color);
-  padding-right: 2rem; /* Adds space between titlse and links */
-  white-space: nowrap; /* Prevents text wrapping */
-  overflow: hidden; /* Ensures the text doesn't overflow the container */
-  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+  padding-right: 2rem;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .navbar-title .subtitle {
-  font-size: 0.9rem; /* Smaller than the main title */
-  color: var(--secondary-color);       /* Lighter color than the main title */
-  margin-top: 0.2rem; /* Small margin to separate from the title */
-  white-space: nowrap; /* Prevents text wrapping */
+  font-size: 1.5vw;
+  color: var(--secondary-color);
+  margin-top: 0.2rem;
+  white-space: nowrap;
 }
 
 
@@ -56,9 +56,8 @@ html {
   margin: 0;
   padding: 0;
   display: flex;
-  row-gap: 2rem;
   color: var(--secondary-color);
-  column-gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navbar li {
@@ -68,18 +67,18 @@ html {
 .navbar a {
   color: var(--secondary-color);
   text-decoration: none;
-  font-size: 1.4rem; /* Adjust font size for better fit */
-  white-space: nowrap; /* Prevents text wrapping */
-  overflow: hidden; /* Ensures text doesn't overflow */
+  font-size: 2.5vw; 
+  white-space: nowrap; 
+  overflow: hidden; 
   text-align: center;
   margin: 0 -.25rem;
   padding: 0.1rem .25rem;
   box-shadow: inset 0 0 0 0 var(--secondary-color);
-  transition: color .5s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out;
+  transition: color .5s ease-in-out, box-shadow .6s ease-in-out, text-shadow .3s ease-in-out;
 }
 
 .navbar a:hover {
-  box-shadow: inset 110px 0 0 0 var(--secondary-color);
+  box-shadow: inset 10em 0 0 0 var(--secondary-color);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   color: var(--primary-color);
 }
@@ -92,11 +91,11 @@ html {
 .navbar a.active {
   font-weight: bold;
   box-shadow: inset 0 0 0 0 var(--secondary-color);
-  transition: color .5s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out;
+  transition: color .5s ease-in-out, box-shadow .6s ease-in-out, text-shadow .3s ease-in-out;
 }
 
 .navbar a.active:hover {
-  box-shadow: inset 130px 0 0 0 var(--secondary-color);
+  box-shadow: inset 10em 0 0 0 var(--secondary-color);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   color: var(--primary-color);
 }
@@ -132,7 +131,7 @@ html {
   padding: 10vmin;
 }
 .hero__text h1 {
-  font-size: 3em;
+  font-size: 5vw;
   line-height: 1.2;
   color: var(--secondary-color);
   
@@ -143,16 +142,20 @@ html {
 
 .hero__introduction {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-size: cover;
   background-position: center;
   background-color: var(--secondary-color);
+  padding: 5vmin;
 }
 
 .hero__introduction-text {
+  flex: 1;
   padding: 5%;
-  font-size: 2.5vw;
+  padding-right: 5%;
+  font-size: 1.5vw;
+
 }
 
 .hero__introduction h2 {
@@ -172,7 +175,7 @@ html {
   height: 100%;
   border-radius: 100% / 50%;
   object-fit: cover;
-  border: #333333 solid 2px;
+  border: var(--tertiary-color) solid 2px;
   margin-left: 20px;
 }
 
@@ -330,6 +333,12 @@ html {
   width: 70%;
 }
 
+.resume-container h2 {
+  color: var(--secondary-color);
+  padding: 1vmin;
+  font-size: 2.5vmin;
+}
+
 .resume-iframe {
   width: 100%;
   height: 80vh;
@@ -341,8 +350,9 @@ html {
 
 .resume-p{
   align-content: center;
-  color: var(--secondary-color);;
-  font-size: 1.2em;
+  color: var(--secondary-color);
+  font-size: 2.5vw;
+  padding: 1vmin;
   margin: 10px;
 }
 
@@ -377,7 +387,7 @@ html {
   justify-content: center;
   text-align: center;
   border: solid 1px;
-  width: auto;
+  width: 80%;
   height: auto;
   border-radius: 20px;
   box-shadow: 0 0 1px 0.5px var(--secondary-color);
@@ -386,7 +396,8 @@ html {
 }
 
 .contact-container h1 {
-  color: white
+  color: white;
+  font-size: 3.5vmin;
 }
 
 .contact-container h1 .highlight {
@@ -396,6 +407,7 @@ html {
 .contact-container p {
   margin: 10px;
   color: white;
+  font-size: 2vmin;
 }
 
 
@@ -405,12 +417,12 @@ html {
 }
 
 .contact-info h2 {
-  font-size: 20px;
+  font-size: 2.5vmin;
   color: var(--tertiary-color);
 }
 .contact-info p,
 .contact-info a {
-  font-size: 18px;
+  font-size: 1.8vmin;
   color: white;
   text-decoration: none;
 }
@@ -423,15 +435,14 @@ html {
   list-style-type: none;
   padding: 0;
   display: flex;
-  gap: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  gap: 2vmin;
+  margin-top: 1.5vmin;
 }
 .social-links li {
   display: inline;
 }
 .social-links a {
-  font-size: 18px;
+  font-size: 1.8vmin;
   color: white;
   text-decoration: none;
   transition: color 0.3s;
