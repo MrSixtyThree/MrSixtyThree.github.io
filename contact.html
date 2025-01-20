@@ -17,11 +17,11 @@
     <!-- Page Content -->
     <div class="contact-container-parent">
       <section class="contact-container">
-        <h1>GET IN TOUCH</h1>
+        <h1>Get in <span class="highlight">Contact</span></h1>
         <p>Feel free to reach out to me through any of the following channels!</p>
         <div class="contact-info">
           <h2>Email</h2>
-          <p><a href="mailto:declan.greenwell@gmail.com">declan.greenwell@gmail.com</a></p>
+          <p><a href="javascript:void(0);" onclick="copyEmail()">declan.greenwell@gmail.com</a></p>
           <h2>Social Media</h2>
           <ul class="social-links">
             <li><a href="https://instagram.com/deccclan.g" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
@@ -53,6 +53,12 @@
               }
           });
           
+      }
+
+      function copyEmail() {
+        const email = 'declan.greenwell@gmail.com';
+        navigator.clipboard.writeText(email);
+        alert('Email copied to clipboard!');
       }
     
       window.addEventListener("load", loadNavbar);
