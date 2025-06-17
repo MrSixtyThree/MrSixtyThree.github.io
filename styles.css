@@ -14,20 +14,22 @@
 }
 
 /* Set custom cursor */
-html {
-  cursor: url("images/cursor_default.png"), auto;
-}
+/* html {
+  cursor: url("images/cursor_default.cur"), auto;
+} */
 
 /* ******************* Navigation Bar ******************* */
 
 /* Style for the navigation bar */
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertically centers the title and links */
-  padding: 1.5rem 2rem;
+  align-items: center;
+  padding: 2.5vw 3vw;
   background-color: var(--primary-color);
   overflow: hidden; /* Ensures the content doesn't overflow */
+  height: auto;
 }
 
 /* Style for the title */
@@ -50,7 +52,6 @@ html {
 }
 
 
-/* Style for the navigation links */
 .navbar {
   list-style-type: none;
   margin: 0;
@@ -209,6 +210,8 @@ html {
 
 .accordion-container__card:hover {
   flex-grow: 10;
+  cursor: pointer;
+
 }
 .accordion-container__card:hover img {
   filter: grayscale(0);
@@ -219,6 +222,8 @@ html {
   font-size: 2em;
   transform: rotate(0deg) skew(0deg);
   opacity: 1;
+  cursor: pointer;
+
 }
 .accordion-container__card img {
   width: 100%;
@@ -234,9 +239,12 @@ html {
   transition: all 1s ease-in-out;
   filter: grayscale(100%);
   transform: scale(1.25);
+  
 }
 .accordion-container__card:hover video {
   filter: grayscale(0);
+  cursor: pointer;
+
 }
 .accordion-container__card:not(:last-child) {
   margin-right: 1em;
@@ -266,6 +274,8 @@ html {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  cursor: pointer;
+
 }
 
 .accordion-container__card-head a {
@@ -281,28 +291,64 @@ html {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.project-details h2 {
-  margin: 0 0 10px;
+.project-details-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--tertiary-color);
 }
 
-.project-details p {
-  margin: 10px 0;
+.project-images {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.learn-more-btn {
+.project-images img {
+  max-width: 30%;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out;
+  padding: 1.5vw;
+}
+
+.project-images img:hover {
+  transform: scale(1.05);
+}
+
+.project-description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--secondary-color);
+  text-align: justify;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.project-links a {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: #007bff;
+  padding: 10px 20px;
+  background-color: var(--tertiary-color);
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.learn-more-btn:hover {
-  background-color: #0056b3;
+.project-links a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 /* ******************* Resume Page ******************* */
@@ -463,3 +509,6 @@ html {
   background-color: #333;
 }
 
+.hidden {
+  display: none;
+}

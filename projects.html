@@ -17,36 +17,51 @@
   
   <!-- Projects Accordion Slider -->
   <div class="accordion-container">
-    <div class="accordion-container__card">
+    <div class="accordion-container__card" data-project="rapidRoute">
+      <video class="accordion-container__card-video" id="rapidRouteVideo" src="videos/rapidroute_vid.mp4" autoplay muted loop playsinline alt="Rapid Route Demonstration" width="100%" height="100%"> </video>
+      <div class="accordion-container__card-head">Rapid Route</div>
+    </div>
+    <div class="accordion-container__card" data-project="mazeRun">
       <video class="accordion-container__card-video" id="mazeRunVideo" src="videos/mazerun_trailer_full.mov" autoplay muted loop playsinline alt="Maze Run Video Trailer" width="100%" height="100%"> </video>
-      <a class="accordion-container__card-head" href="https://mrsixtythree.itch.io/maze-run" target="_blank">Maze RUN</a>
+      <div class="accordion-container__card-head">Maze RUN</div>
     </div>
-    <div class="accordion-container__card">
+    <div class="accordion-container__card" data-project="openGL">
       <video class="accordion-container__card-video" id="openGLVideo" src="videos/OpenGL Demo.mp4" autoplay muted loop playsinline alt="OpenGL Demo Video" width="100%" height="100%"> </video>
-      <a class="accordion-container__card-head" href="https://github.com/MrSixtyThree/OpenGL-Shader-Rendering-Project" target="_blank">OpenGL Project</a>
+      <div class="accordion-container__card-head">OpenGL Project</div>
     </div>
-    <div class="accordion-container__card">
+    <div class="accordion-container__card" data-project="projectVR">
       <video class="accordion-container__card-video" id="projectVRVideo" src="videos/ProjectVRSmallDemo.mp4" autoplay muted loop playsinline alt="OpenGL Demo Video" width="100%" height="90%"> </video>
-      <a class="accordion-container__card-head" href="https://mrsixtythree.itch.io/project-vr" target="_blank">Project VR</a>
+      <div class="accordion-container__card-head">Project VR</div>
     </div>
-    <div class="accordion-container__card">
+    <div class="accordion-container__card" data-project="portfolioWebsite">
       <img class="accordion-container__card-image" src="images/html_code.png" alt="Portfolio website preview" width="100%" height="100%">
-      <a class="accordion-container__card-head" href="https://github.com/MrSixtyThree/MrSixtyThree.github.io" target="_blank">Portfolio Website</a>
+      <div class="accordion-container__card-head">Portfolio</div>
     </div>
-    <div class="accordion-container__card">
+    <div class="accordion-container__card" data-project="comingSoon">
       <img class="accordion-container__card-image" src="images/under_construction.jpg" alt="Coming Soon Image" width="100%" height="100%">
       <div class="accordion-container__card-head">Coming Soon...</div>
     </div>
   </div>
 
   <!-- Project Details Container -->
-  <!-- <div class="project-details-container">
-    <div class="project-details">
-        <h2 id="project-title">Select a Project</h2>
-        <p id="project-description">Click on a project to see more details here.</p>
-        <a id="project-link" href="#" target="_blank" class="learn-more-btn">Learn More</a>
+  <div class="project-details-container hidden">
+    <div class="project-details-header">
+      <h2 id="project-title"> </h2>
     </div>
-  </div> -->
+    
+    <div class="project-images">
+      
+    </div>
+  
+    <div class="project-description">
+      <p>
+      </p>
+    </div>
+  
+    <div class="project-links">
+      
+    </div>
+  </div>
   
   
 
@@ -88,6 +103,125 @@
             video.currentTime = startTime;  // Loop back to start time
         }
     });
+
+    // Project Details Constants
+    const PROJECT_DATA = {
+      mazeRun: {
+        title: "Maze RUN",
+        description: "Maze RUN is a first-person shooter set in a procedurally generated 3D maze populated with autonomous enemies that patrol and pursue the player. The goal is to locate an artifact and escape while navigating dynamically shifting environments. Enemies are governed by a custom state machine enabling behaviors such as patrolling, investigating bullet impacts and gunshot sounds, and alerting nearby AI agents upon detection. Mazes are generated up to a 25x25 3D grid using an algorithm that ensures full connectivity with guaranteed traversable paths between the player spawn, artifact, and exit. The FPS controller and weapon system were developed from scratch, featuring modular weapon scripts, runtime-controlled animations, randomized camera shake, and shared logic across multiple firearms for scalable weapon handling.",
+        images: [
+          "images/shotgun_in_game.png",
+          "images/enemy_editor.png",
+          "images/mg_in_game.png",
+          "images/upgrades_in_game.png",
+          "images/maze_editor_view.png",
+          "images/pistol_in_game.png",
+        ],
+        links: [
+          { text: "Play the Game", url: "https://mrsixtythree.itch.io/maze-run"},
+          { text: "View Repository", url: "https://github.com/MrSixtyThree/MazeRunRemastered"},
+        ],
+      },
+      rapidRoute: {
+        title: "Rapid Route",
+        description: "RapidRoute is an Android-based delivery optimization app built in Java, designed to streamline delivery logistics by scanning, validating, and sequencing delivery stops. It uses Google ML Kit for on-device OCR to extract address data from parcel labels, which is then validated through the Geospace G-NAF API using regex filtering and request throttling. Routes are optimized using the new Google Route Optimization API, enabling support for up to 98 stops—nearly 10× the limit of standard Google Maps navigation. The app features in-app navigation,  persistent state management, user-configurable preferences (e.g., avoid tolls, optimize for time vs. distance), route archiving, delivery tracking, and manual or scanned address entry, all within a modular architecture tailored for real-world driver workflows.",
+        images: [
+          "images/rapdroute_signin_dark.png",
+          "images/rapidroute_add_stops.png",
+          "images/rapidroute_navigation_light.png",
+          "images/rapidroute_optimized_route_screen.png",
+          "images/rapidroute_signin_light.png",
+          "images/rapidroute_dashboard_dark.png",
+        ],
+        links: [
+          
+        ]
+      },
+      openGL: {
+        title: "OpenGL Project",
+        description: "The OpenGL Project is a real-time rendering demo built in C++ using modern OpenGL, showcasing custom GLSL shaders, 3D texture mapping, and dynamic lighting techniques. The application features manually implemented vertex and fragment shaders to support diffuse and specular lighting, normal mapping, and environment-based reflections. 3D models are loaded and rendered with custom UV-mapped textures, demonstrating efficient buffer management and matrix transformations for camera movement and object rotation. The project serves as a foundation for low-level graphics programming and shader-based visual effects, emphasizing hands-on control of the GPU rendering pipeline.",
+        images: [
+          
+        ],
+        links: [
+          { text: "View Repository", url: "https://github.com/MrSixtyThree/OpenGL-Shader-Rendering-Project"},
+        ]
+      },
+      projectVR: {
+        title: "Project VR",
+        description: "Project VR is a virtual reality experience built in Unity using the XR Interaction Toolkit and XR Device Simulator, offering a physics-driven environment filled with interactive objects. Designed for both immersive VR play and desktop simulation, it supports grab, raycast, and use mechanics via keyboard/mouse input. Players can interact with lamps, a functional TV remote, books and shelves using XR socket systems, throwable physics-based balls, a working Polaroid camera that prints photos, a fan switch, watering can, movable paintings, a record player, and a mobile phone. The scene emphasizes tangible interaction and environmental play, encouraging exploration—including a hidden passage activated by manipulating the bookshelves.",
+        images: [
+          "images/Polaroid.png",
+          "images/Scene 2.png",
+          "images/Scene1.png",
+          "images/Scene 3.png",
+        ],
+        links: [
+          { text: "View Repository", url: "https://github.com/MrSixtyThree/Project-VR"},
+          { text: "Play Demo", url: "https://mrsixtythree.itch.io/project-vr"}
+        ]
+      },
+      portfolioWebsite: {
+        title: "Portfolio Website",
+        description: "This portfolio website was built from scratch using HTML, CSS, and vanilla JavaScript to showcase software and game development projects in an interactive and responsive layout. It features a dynamic project viewer with accordion-style previews, embedded videos, and JavaScript-driven content loading. The site uses modular components like a reusable navigation bar loaded via fetch, and supports mobile responsiveness with viewport scaling and flexible layout design. Additional pages include an embedded resume viewer, contact page with styled social links, and themed color variables managed through CSS custom properties for consistent visual identity.",
+        images: [
+          
+        ],
+        links: [
+          { text: "View Repository", url: "https://github.com/MrSixtyThree/MrSixtyThree.github.io"}
+        ]
+      },
+      comingSoon: {
+        title: "What projects are coming next?",
+        description: "I'm usually juggling multiple projects at once, a mix of personal and professional work. If you want to know what I'm actively working on that might not be on the website yet, get in contact!",
+        images: [
+          
+        ],
+        links: [
+        ]
+      }
+    };
+
+    // Function to update project details based on the selected project
+    document.querySelectorAll(".accordion-container__card").forEach(card => {
+      card.addEventListener('click', () => {
+        const projectKey = card.getAttribute('data-project');
+        const project = PROJECT_DATA[projectKey];
+        if (project) updateProjectDetails(project);
+      });
+    });
+
+    // Function to update project details container
+  function updateProjectDetails(project) {
+    // Reveal the container if hidden
+    const container = document.querySelector('.project-details-container');
+    container.classList.remove('hidden');
+
+    document.getElementById('project-title').textContent = project.title;
+
+    const description = document.querySelector('.project-description p');
+    description.textContent = project.description;
+
+    const imageContainer = document.querySelector('.project-images');
+    imageContainer.innerHTML = ''; // Clear current images
+    project.images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `${project.title} Screenshot`;
+      imageContainer.appendChild(img);
+    });
+
+    const linkContainer = document.querySelector('.project-links');
+    linkContainer.innerHTML = ''; // Clear current links
+    project.links.forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.url;
+      a.textContent = link.text;
+      a.target = "_blank";
+      a.className = link.text.includes("Repository") ? "project-repo-link" : "project-link";
+      linkContainer.appendChild(a);
+   });
+  }
 
   </script>
   <!-- ********* END JAVASCRIPT ************** -->
