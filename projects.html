@@ -21,6 +21,10 @@
       <video class="accordion-container__card-video" id="rapidRouteVideo" src="videos/rapidroute_vid.mp4" autoplay muted loop playsinline alt="Rapid Route Demonstration" width="100%" height="100%"> </video>
       <div class="accordion-container__card-head">Rapid Route</div>
     </div>
+    <div class="accordion-container__card" data-project="colourVault">
+      <video class="accordion-container__card-video" id="mazeRunVideo" src="videos/ColourVaultDemo.mp4" autoplay muted loop playsinline alt="Colour Vault Demo" width="100%" height="100%"> </video>
+      <div class="accordion-container__card-head">Colour Vault</div>
+    </div>
     <div class="accordion-container__card" data-project="mazeRun">
       <video class="accordion-container__card-video" id="mazeRunVideo" src="videos/mazerun_trailer_full.mov" autoplay muted loop playsinline alt="Maze Run Video Trailer" width="100%" height="100%"> </video>
       <div class="accordion-container__card-head">Maze RUN</div>
@@ -122,9 +126,21 @@
           { text: "View Repository", url: "https://github.com/MrSixtyThree/MazeRunRemastered"},
         ],
       },
+      colourVault: {
+        title: "Colour Vault",
+        description: "Colour Vault is a custom Adobe Illustrator extension that extracts and names colours from documents, artboards, or selections. It auto-detects HEX, RGB, CMYK, HSB, and Pantone values, assigns names using a 30K+ colour name dataset, and presents the data in an expandable, Illustrator-styled panel. Features include live name editing, copy-to-clipboard buttons, smooth animations, and PDF swatch export.",
+        images: [
+          "images/ColourVault1.png",
+          "images/ColourVault2.png",
+          "images/ColourVault3.png",
+        ],
+        links: [
+          
+        ]
+      },
       rapidRoute: {
         title: "Rapid Route",
-        description: "RapidRoute is an Android-based delivery optimization app built in Java, designed to streamline delivery logistics by scanning, validating, and sequencing delivery stops. It uses Google ML Kit for on-device OCR to extract address data from parcel labels, which is then validated through the Geospace G-NAF API using regex filtering and request throttling. Routes are optimized using the new Google Route Optimization API, enabling support for up to 98 stops—nearly 10× the limit of standard Google Maps navigation. The app features in-app navigation,  persistent state management, user-configurable preferences (e.g., avoid tolls, optimize for time vs. distance), route archiving, delivery tracking, and manual or scanned address entry, all within a modular architecture tailored for real-world driver workflows.",
+        description: "RapidRoute is an Android-based delivery optimization app built in Java, designed to streamline delivery logistics by scanning, validating, and sequencing delivery stops. It uses Google ML Kit for on-device OCR to extract address data from parcel labels, which is then validated through the Geospace G-NAF API using regex filtering and request throttling. Routes are optimized using the new Google Route Optimization API, enabling support for up to 98 stops, nearly 10x the limit of standard Google Maps navigation. The app features in-app navigation,  persistent state management, user-configurable preferences (e.g., avoid tolls, optimize for time vs. distance), route archiving, delivery tracking, and manual or scanned address entry, all within a modular architecture tailored for real-world driver workflows.",
         images: [
           "images/rapdroute_signin_dark.png",
           "images/rapidroute_add_stops.png",
