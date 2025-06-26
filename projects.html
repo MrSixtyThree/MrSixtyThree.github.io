@@ -29,6 +29,10 @@
       <video class="accordion-container__card-video" id="mazeRunVideo" src="videos/mazerun_trailer_full.mov" autoplay muted loop playsinline alt="Maze Run Video Trailer" width="100%" height="100%"> </video>
       <div class="accordion-container__card-head">Maze RUN</div>
     </div>
+    <div class="accordion-container__card" data-project="sudokuVision">
+      <video class="accordion-container__card-video" id="sudokuVisionVide0" src="videos/SudokuSolverDemo.mp4" autoplay muted loop playsinline alt="Sudoku Vision Demo" width="100%" height="100%"> </video>
+      <div class="accordion-container__card-head">Sudoku Vision</div>
+    </div>
     <div class="accordion-container__card" data-project="openGL">
       <video class="accordion-container__card-video" id="openGLVideo" src="videos/OpenGL Demo.mp4" autoplay muted loop playsinline alt="OpenGL Demo Video" width="100%" height="100%"> </video>
       <div class="accordion-container__card-head">OpenGL Project</div>
@@ -52,6 +56,8 @@
     <div class="project-details-header">
       <h2 id="project-title"> </h2>
     </div>
+
+    <div class="project-video"></div>
     
     <div class="project-images">
       
@@ -113,6 +119,7 @@
       mazeRun: {
         title: "Maze RUN",
         description: "Maze RUN is a first-person shooter set in a procedurally generated 3D maze populated with autonomous enemies that patrol and pursue the player. The goal is to locate an artifact and escape while navigating dynamically shifting environments. Enemies are governed by a custom state machine enabling behaviors such as patrolling, investigating bullet impacts and gunshot sounds, and alerting nearby AI agents upon detection. Mazes are generated up to a 25x25 3D grid using an algorithm that ensures full connectivity with guaranteed traversable paths between the player spawn, artifact, and exit. The FPS controller and weapon system were developed from scratch, featuring modular weapon scripts, runtime-controlled animations, randomized camera shake, and shared logic across multiple firearms for scalable weapon handling.",
+        video: "videos/mazerun_trailer_full.mov",
         images: [
           "images/shotgun_in_game.png",
           "images/enemy_editor.png",
@@ -129,6 +136,7 @@
       colourVault: {
         title: "Colour Vault",
         description: "Colour Vault is a custom Adobe Illustrator extension that extracts and names colours from documents, artboards, or selections. It auto-detects HEX, RGB, CMYK, HSB, and Pantone values, assigns names using a 30K+ colour name dataset, and presents the data in an expandable, Illustrator-styled panel. Features include live name editing, copy-to-clipboard buttons, smooth animations, and PDF swatch export.",
+        video: "videos/ColourVaultDemo.mp4",
         images: [
           "images/ColourVault1.png",
           "images/ColourVault2.png",
@@ -141,6 +149,7 @@
       rapidRoute: {
         title: "Rapid Route",
         description: "RapidRoute is an Android-based delivery optimization app built in Java, designed to streamline delivery logistics by scanning, validating, and sequencing delivery stops. It uses Google ML Kit for on-device OCR to extract address data from parcel labels, which is then validated through the Geospace G-NAF API using regex filtering and request throttling. Routes are optimized using the new Google Route Optimization API, enabling support for up to 98 stops, nearly 10x the limit of standard Google Maps navigation. The app features in-app navigation,  persistent state management, user-configurable preferences (e.g., avoid tolls, optimize for time vs. distance), route archiving, delivery tracking, and manual or scanned address entry, all within a modular architecture tailored for real-world driver workflows.",
+        video: "videos/rapidroute_vid.mp4",
         images: [
           "images/rapdroute_signin_dark.png",
           "images/rapidroute_add_stops.png",
@@ -156,6 +165,7 @@
       openGL: {
         title: "OpenGL Project",
         description: "The OpenGL Project is a real-time rendering demo built in C++ using modern OpenGL, showcasing custom GLSL shaders, 3D texture mapping, and dynamic lighting techniques. The application features manually implemented vertex and fragment shaders to support diffuse and specular lighting, normal mapping, and environment-based reflections. 3D models are loaded and rendered with custom UV-mapped textures, demonstrating efficient buffer management and matrix transformations for camera movement and object rotation. The project serves as a foundation for low-level graphics programming and shader-based visual effects, emphasizing hands-on control of the GPU rendering pipeline.",
+        video: "videos/OpenGL Demo.mp4",
         images: [
           
         ],
@@ -163,9 +173,20 @@
           { text: "View Repository", url: "https://github.com/MrSixtyThree/OpenGL-Shader-Rendering-Project"},
         ]
       },
+      sudokuVision: {
+        title: "Sudoku Vision",
+        description: "SudokuVision is a real-time Sudoku scanner and solver built with OpenCV and TensorFlow. It uses a custom-trained CNN model developed from a 1,600-image dataset generated using a custom script that extracted digits from scanned Sudoku grids. The app detects the grid via webcam, extracts digits, solves the puzzle, and overlays the solution live. Includes advanced OCR preprocessing, threaded background solving, and a lightweight executable built with PyInstaller for seamless use.",
+        video: "videos/SudokuSolverDemo.mp4",
+        images: [
+          
+        ],
+        links: [
+        ]
+      },
       projectVR: {
         title: "Project VR",
         description: "Project VR is a virtual reality experience built in Unity using the XR Interaction Toolkit and XR Device Simulator, offering a physics-driven environment filled with interactive objects. Designed for both immersive VR play and desktop simulation, it supports grab, raycast, and use mechanics via keyboard/mouse input. Players can interact with lamps, a functional TV remote, books and shelves using XR socket systems, throwable physics-based balls, a working Polaroid camera that prints photos, a fan switch, watering can, movable paintings, a record player, and a mobile phone. The scene emphasizes tangible interaction and environmental play, encouraging exploration—including a hidden passage activated by manipulating the bookshelves.",
+        video: "videos/ProjectVRSmallDemo.mp4",
         images: [
           "images/Polaroid.png",
           "images/Scene 2.png",
@@ -218,6 +239,23 @@
     const description = document.querySelector('.project-description p');
     description.textContent = project.description;
 
+    // Update Video
+    const videoContainer = document.querySelector('.project-video');
+    videoContainer.innerHTML = ''; // Clear previous video
+    if (project.video) {
+      const video = document.createElement('video');
+      video.src = project.video;
+      video.controls = true;
+      video.autoplay = false;
+      video.muted = false;
+      video.loop = true;
+      video.classList.add('project-details-video');
+      video.style.width = "100%";
+      video.style.maxHeight = "480px";
+      videoContainer.appendChild(video);
+    }
+
+    // Update Images
     const imageContainer = document.querySelector('.project-images');
     imageContainer.innerHTML = ''; // Clear current images
     project.images.forEach(src => {
